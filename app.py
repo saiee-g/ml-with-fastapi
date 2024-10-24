@@ -1,15 +1,26 @@
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, Request, Form
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
 from demo.config import get_titanic, engine
 from demo import crud, model
 
 
 app = FastAPI()
+
+app.mount("/static", StaticFiles(directory="demo/static"), name="static")
+templates = Jinja2Templates(directory="demo/templates")
+
 model.Base.metadata.create_all(bind=engine)
 
-@app.get("/")
-def welcome():
-    return {"Message" : "Welcome to our Ship"}
+
+
+@app.get("/", response_class=HTMLResponse)
+def welcome(request: Request):
+    return templates.TemplateResponse(
+        request=request, name="index.html"
+    )
 
 @app.get("/users/")
 def show_user(titanic: Session = Depends(get_titanic)):
