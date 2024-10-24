@@ -28,7 +28,7 @@ def show_user(titanic: Session = Depends(get_titanic)):
     return users
 
 @app.post("/users/")
-def create_user(name: str, gender: str, age:int, titanic: Session = Depends(get_titanic)):
+def create_user(request: Request, name: str = Form(...), gender: str = Form(...), age:int = Form(...), titanic: Session = Depends(get_titanic)):
     titanic_user = crud.add_user(titanic, name, gender, age)
     return titanic_user
 
