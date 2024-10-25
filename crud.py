@@ -1,9 +1,13 @@
 from sqlalchemy.orm import Session
+from sqlalchemy import delete
 from demo.model import User
 
 
 def get_user(titanic:Session):
     return titanic.query(User).all()
+
+def get_user_id(titanic: Session, id:int):
+    return titanic.query(User).filter(User.id == id).first()
 
 def add_user(titanic:Session, name:str, gender:str, age:int):
     titanic_user = User(name=name, gender=gender, age=age)
@@ -22,3 +26,11 @@ def update_user(titanic:Session, id: int, name:str, gender:str, age:int):
         titanic.refresh(user_to_update)
         return True
     return None
+
+def delete_user(titanic: Session, id:int):
+    user_to_delete = titanic.query(User).where(User.id == id).first()
+    if user_to_delete:
+        titanic.delete(user_to_delete)
+        titanic.commit()
+        return True
+    return False

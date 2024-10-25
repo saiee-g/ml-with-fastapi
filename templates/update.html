@@ -4,12 +4,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/static/favicon.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="/static/style.css">
-    <title>Titanic</title>
+    <title>Titanic: Update Details</title>
 </head>
 <body>
-    <h1>Welcome aboard Titanic!</h1>
-
-    <form action="/users/" method="post">
+    <h1>Change my details</h1>
+    <form action="/users/{id}/" method="put">
+        <label for="id">ID:</label>
+        <input type="number" id="id" name="id" required><br><br>
         <label for="name">Name: </label>
         <input type="text" id="name" name="name" required><br><br>
         <label for="gender">Gender:</label>
@@ -18,8 +19,7 @@
         <input type="number" id="age" name="age" required><br><br>
         <input type="submit" value="Get on Board!"><br><br>
     </form>
-
     <br><br><a href="/users/">Confirmed Passengers</a>
-    <br><br><a href="/templates/update.html">Update Details</a>
+    <br><br><a href="/">Back to Deck</a>
 </body>
 </html>
