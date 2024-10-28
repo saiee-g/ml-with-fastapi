@@ -28,6 +28,17 @@ def update_user(id:int, name: str, gender: str, age:int, titanic: Session = Depe
         raise HTTPException(status_code=404, detail="User Not Found")
     return updated_user
 
+@app.delete("/users/{id}/")
+def delete_user(id: int, titanic: Session = Depends(get_titanic)):
+    existing_user = crud.get_user_id(titanic, id)
+    if not existing_user:
+        raise HTTPException(status_code=404, detail="User not Found")
+    
+    deleted_user = crud.delete_user(titanic, id)
+    if not deleted_user:
+        raise HTTPException(status_code=400, detail="Error Deleting User")
+    return {"message" : "User info deleted successfully"}
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="127.0.0.1", port=8000)
