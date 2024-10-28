@@ -2,7 +2,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 
-DATABASE_URL = "postgresql://postgres:Saiee%40123@localhost:5432/titanic"
+DATABASE_URL = "sqlservice://username:password@localhost:5432/titanic"
 
 engine = create_engine(DATABASE_URL)
 
