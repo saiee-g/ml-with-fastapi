@@ -1,5 +1,3 @@
-/* styles.css */
-
 body {
     background-color: #B2E0E6; /* Baby blue background */
     font-family: Arial, sans-serif;
@@ -47,4 +45,11 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #0056b3; /* Darker button color on hover */
 }
- 
+
+.result{
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #0056b3;
+    font-style: italic;
+    font-weight: bolder;
+}

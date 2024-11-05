@@ -4,22 +4,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/static/favicon.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="/static/style.css">
-    <title>Titanic: Update Details</title>
+    <title>Titanic Prediction</title>
 </head>
 <body>
-    <h1>Change my details</h1>
-    <form action="/users/{id}/" method="put">
-        <label for="id">ID:</label>
-        <input type="number" id="id" name="id" required><br><br>
+    <h1>Will I survive Titanic?</h1>
+
+    <form action="/predict/" method="post">
         <label for="name">Name: </label>
         <input type="text" id="name" name="name" required><br><br>
         <label for="gender">Gender:</label>
         <input type="text" id="gender" name="gender" required><br><br>
         <label for="age">Age:</label>
         <input type="number" id="age" name="age" required><br><br>
-        <input type="submit" value="Get on Board!"><br><br>
+        <label for="age">Fare:</label>
+        <input type="number" id="fare" name="fare" required><br><br>
+        <label for="age">Passenger Class:</label>
+        <input type="number" id="pclass" name="pclass" required><br><br>
+        <input type="submit" value="Predict"><br><br>
     </form>
+
     <br><br><a href="/users/">Confirmed Passengers</a>
-    <br><br><a href="/">Back to Deck</a>
+    <br><br><a href="/">Back on Deck!</a>
 </body>
 </html>

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Float
 from demo.config import Base
 
 class User(Base):
@@ -7,4 +7,6 @@ class User(Base):
     name = Column(String(50))
     gender = Column(String(1))
     age = Column(Integer)
+    fare = Column(Float)
+    pclass = Column(Integer)
 
